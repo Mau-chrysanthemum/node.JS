@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="http://127.0.0.1:3000/css/site.css">
+        <title>简易音乐播放器</title>
+    </head>
+
+    <body>
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>文件名称</th>
+                <th>操作</th>
+            </tr>                                                                                                                                                                                 
+
+
+            <!-- art-template的模版，for循环语法 -->
+            {{each music}}
+            <tr>
+                <td>{{$index+1}}</td>
+                <td>{{$value.name}}</td>
+                <td><a href="#" onclick="playMusic('{{$value.name}}')">播放</a></td>
+            </tr>
+            {{/each}}
+            <audio id="audioId" src="" autoplay></audio>
+        </table>
+    </body>
+<script>
+    function playMusic(name) {
+        console.log(name);
+        
+        document.getElementById('audioId').src = `http://127.0.0.1:3000/musics/${name}`
+    }
+</script>
+</html>
+
